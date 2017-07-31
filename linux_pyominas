@@ -3,6 +3,10 @@
 # directories, but the script could be rewritten to search for the necessary
 # locations prior to adjusting environment varibles and launching python
 
+APPLICATION=python
+MODULES=pyominas_setup.py
+export PYTHONSTARTUP=$MODULES
+
 # ominas setup
 . ~/.ominas/ominas_setup.sh
 
@@ -14,10 +18,15 @@ export PYTHONPATH="/usr/local/exelis/idl85/bin/bin.linux.x86_64:/usr/local/exeli
 # ideally, find activate and source it in this script
 export PATH="/data/software/anaconda2/bin:$PATH"
 
+# read arguments - better way of doing this?
+# since I'm running pyton 2.7, I'm just going to use execfile for now
+ARGS=""{
+if [ $# ]; then 
+	ARGS = "$1"
+	echo ARGS
+fi
+
 # launch python
-APPLICATION=python
-MODULES=pyominas_setup.py
-export PYTHONSTARTUP=$MODULES
 exec $APPLICATION
 
 # attempting to return to shell
