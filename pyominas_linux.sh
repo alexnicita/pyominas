@@ -3,14 +3,9 @@
 # directories, but the script could be rewritten to search for the necessary
 # locations prior to adjusting environment varibles and launching python
 
-if [ "${LD_LIBRARY_PATH}" = "" ]; then
-  export LD_LIBRARY_PATH="/data/software/anaconda2/lib:/usr/local/exelis/idl85/bin/bin.linux.x86_64"
-else
-  export LD_LIBRARY_PATH="/data/software/anaconda2/lib:/usr/local/exelis/idl85/bin/bin.linux.x86_64:${LD_LIBRARY_PATH}"
-fi
+export LD_LIBRARY_PATH="/data/software/anaconda2/lib:/usr/local/exelis/idl85/bin/bin.linux.x86_64"
 
-if [ "${PYTHONPATH}" = "" ]; then
-  export PYTHONPATH="/usr/local/exelis/idl85/bin/bin.linux.x86_64:/usr/local/exelis/idl85/lib/bridges"
+export PYTHONPATH="/usr/local/exelis/idl85/bin/bin.linux.x86_64:/usr/local/exelis/idl85/lib/bridges"
 
 # issues with my Anaconda activate script so I'm just adjusting PATH
 # ideally, find activate and source it in this script
