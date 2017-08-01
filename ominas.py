@@ -1,6 +1,14 @@
 import idlpy
 
+
+
+
 class ominas(idlpy.IDL):
+
+    def __init__(self):
+      idlpy.IDL.__init__(self)
+
+
   # Override the magic method for getattr for an IDL object
   # Note: This will not override getattr for the class
     def __getattr__(self, attr):
@@ -22,7 +30,7 @@ class ominas(idlpy.IDL):
 
         #*** print("instance __getattr__: " + attr)
 
-        isMethod = pyidl.callFunction("Obj_HasMethod", (self, attr,))
+        isMethod = 1 #pyidl.callFunction("Obj_HasMethod", (self, attr,))
 
         if (isMethod):
             # A generic wrapper that can call an IDL method.
