@@ -33,10 +33,19 @@ compile_opt idl2,logical_predicate
 
   if isa(result,'objref') then begin
    self.objs=list(result,/extract)
-   return,self 
+   return,self.objs
   endif
 
   return, result
+end
+
+
+
+function objarrwrapper::getpropbyname,name
+compile_opt idl2,logical_predicate
+print,'eeeeeeeeeeee'
+help,name,self
+return,1
 end
 
 function objarrwrapper::testfunction,arg1
