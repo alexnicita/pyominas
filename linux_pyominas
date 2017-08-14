@@ -8,24 +8,24 @@
 . ~/.ominas/ominas_setup.sh
 
 # find pyomninas directory
-if [ "$PYOMINAS_DIR" = "" ]; then
-    # OMINAS_DIR environemtn variable from ominas_setup.sh
-    for DIR in $OMINAS_DIR; do
-      if [ -d $DIR ]; then
-          if [ -f $DIR/ominas.py ]; then
-              IDL_DIR=$DIR
-          break
-          fi
-      fi
-    done
-fi
-
-if [ "$PYOMINAS_DIR" = "" ]; then
-    echo "Unable to access the pyominas directory. You will have to
-define the PYOMINAS_DIR environment variable to point at the main
-pyominas directory before it will work."
-    exit 1
-fi
+# if [ "$PYOMINAS_DIR" = "" ]; then
+#     # OMINAS_DIR environemtn variable from ominas_setup.sh
+#     for DIR in $OMINAS_DIR; do
+#       if [ -d $DIR ]; then
+#           if [ -f $DIR/ominas.py ]; then
+#               IDL_DIR=$DIR
+#           break
+#           fi
+#       fi
+#     done
+# fi
+#
+# if [ "$PYOMINAS_DIR" = "" ]; then
+#     echo "Unable to access the pyominas directory. You will have to
+# define the PYOMINAS_DIR environment variable to point at the main
+# pyominas directory before it will work."
+#     exit 1
+# fi
 
 # configure PYTHONSTARTUP
 APPLICATION=python
