@@ -1,5 +1,5 @@
 import sys
 import os
-sys.path.append(/data/pyominas)
+sys.path.append(os.environ['PYOMINAS_DIR'])
 from idlpy import *
-import attrtest
+from ominas import ominas
