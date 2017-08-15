@@ -1,6 +1,7 @@
 import idlpy
 
-
+#try pinging JPL IDL server from LINUX, may have to use IP
+#run IDL.ominasenv info from pyominas and then from IDL
 
 
 class ominas(idlpy.IDL):
@@ -28,23 +29,25 @@ class ominas(idlpy.IDL):
         if (attr[0] == '_'):
             return getattr(super(IDL, self), attr)
 
-        #*** print("instance __getattr__: " + attr)
+        print("instance __getattr__: " + attr)
 
-        isMethod = 1 #pyidl.callFunction("Obj_HasMethod", (self, attr,))
+        isMethod = pyidl.callFunction("Obj_HasMethod", (self, attr,))
 
         if (isMethod):
             # A generic wrapper that can call an IDL method.
             def wrapper(*args, **kw):
                 #*** print "%s%s%s" % (attr, args, kw)
                 args = list(args)
+                args.insert(0, attr)
                 args.insert(0, self.hvid)
                 args = tuple(args)
-                return pyidl.callMethod(attr, args, kw)
+                print attr
+                print args
+                print kw
+                return pyidl.callMethod('_overloadmethod', args, kw)
             return wrapper
         else:
             # otherwise retrieve the property from the IDL object
             args = (self.hvid, attr)
             result = pyidl.callMethod("GetPropByName", args)
             return result
-
-
