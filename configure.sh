@@ -20,12 +20,12 @@ do
 							if [ -n "$path" ]; then
 								PYOMINAS_DIR=$path
 								echo "PYOMINAS_DIR: $PYOMINAS_DIR"
-								echo "Assuming you have run ominas' configure.sh, we will be exporting environment variables to your .bash_profile."
-								# update ~/.bash_profile
+								echo "Assuming you have run ominas' configure.sh, we will be exporting environment variables to your .bashrc."
+								# update ~/.bashrc
 								printf "\n"
-								echo "" >> ~/.bash_profile.bak
-								echo "#added by pyominas' configure.sh" >> ~/.bash_profile
-								echo "export PYOMINAS_DIR=$PYOMINAS_DIR" >> ~/.bash_profile
+								echo "" >> ~/.bashrc.bak
+								echo "#added by pyominas' configure.sh" >> ~/.bashrc
+								echo "export PYOMINAS_DIR=$PYOMINAS_DIR" >> ~/.bashrc
 								echo "Exporting complete."
 								printf "\n"
 							# this doesn't seem to recognize invalid path's -- is there a better bash command for the if?
@@ -33,12 +33,12 @@ do
 								echo "Path is empty. Using current directory as path."
 								PYOMINAS_DIR=$PWD
 								echo "PYOMINAS_DIR: $PYOMINAS_DIR"
-								echo "Assuming you have run ominas' configure.sh, we will be exporting environment variables to your .bash_profile."
-								# update ~/.bash_profile
+								echo "Assuming you have run ominas' configure.sh, we will be exporting environment variables to your .bashrc."
+								# update ~/.bashrc
 								printf "\n"
-								echo "" >> ~/.bash_profile.bak
-								echo "#added by pyominas' configure.sh" >> ~/.bash_profile
-								echo "export PYOMINAS_DIR=$PYOMINAS_DIR" >> ~/.bash_profile
+								echo "" >> ~/.bashrc.bak
+								echo "#added by pyominas' configure.sh" >> ~/.bashrc
+								echo "export PYOMINAS_DIR=$PYOMINAS_DIR" >> ~/.bashrc
 								echo "Exporting complete."
 								printf "\n"
 							fi
@@ -48,12 +48,12 @@ do
 			[Nn]* ) printf "\n"
 							PYOMINAS_DIR=$PWD
 							echo "PYOMINAS_DIR: $PYOMINAS_DIR"
-							echo "We are assuming you have run ominas' configure.sh script. We will be exporting environment variables to your .bash_profile."
-							# update ~/.bash_profile
+							echo "We are assuming you have run ominas' configure.sh script. We will be exporting environment variables to your .bashrc."
+							# update ~/.bashrc
 							printf "\n"
-							echo "" >> ~/.bash_profile
-							echo "# added by pyominas' configure.sh" >> ~/.bash_profile
-							echo "export PYOMINAS_DIR=$PYOMINAS_DIR" >> ~/.bash_profile
+							echo "" >> ~/.bashrc
+							echo "# added by pyominas' configure.sh" >> ~/.bashrc
+							echo "export PYOMINAS_DIR=$PYOMINAS_DIR" >> ~/.bashrc
 							echo "Exporting complete."
 							printf "\n"
 
@@ -82,14 +82,14 @@ fi
 
 printf "Successfully added pyominas' directory to PYTHONPATH.\n"
 
-# question -- should I do this in .bash_profile instead? If not, should I export in linux_pyominas instead?
+# question -- should I do this in .bashrc instead? If not, should I export in linux_pyominas instead?
 # Don't want users running configure script every time they open their terminal.
 
 ### alias
 # also need to implement a way of checking that this hasn't been done already
 printf "Setting up pyominas alias.\n"
 
-echo "alias pyominas=$PYOMINAS_DIR/linux_pyominas" >> ~/.bash_profile
+echo "alias pyominas=$PYOMINAS_DIR/linux_pyominas" >> ~/.bashrc
 
 printf "Alias setup complete.\n"
 
