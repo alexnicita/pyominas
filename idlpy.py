@@ -40,7 +40,7 @@ class IDLType(type):
     def __getattr__(cls, attr, extra=None):
         """
         Retrieve an IDL variable or call an IDL routine.
-        
+
         For example, to retrieve a variable:
         >>> IDL.run("var = 'Hello, World!'")
         >>> var = IDL.var
@@ -70,7 +70,7 @@ class IDLType(type):
     def __setattr__(cls, attr, value):
         """
         Set an IDL variable value.
-        
+
         For example:
         >>> IDL.var = {'key1':5, 'key2': "value"}
         >>> IDL.run('PRINT, var, /IMPLIED')
@@ -80,7 +80,7 @@ class IDLType(type):
 		# add try/catch and fix up error msg
         pyidl.setVariable(attr, value)
 
-        
+
 class IDLRoutine(object):
     """Used to call an IDL function, procedure, or static method."""
     def __init__(self, fn):
@@ -111,13 +111,13 @@ class IDLRoutine(object):
             return pyidl.callMethod(staticMethod, args, kw)
         return wrapper
 
-            
+
 # Use a metaclass so we can have class methods (such as "run") and attributes
 # that can only be invoked on the class, not an instance.
 class IDL(IDLType("IDL", (object,), {})):
     """Used to invoke the run method, and get or set IDL $main$ variables.
     Also serves as the Python class for wrapping IDL objects."""
-    
+
     # hvid is the IDL object heap identifier
     def __init__(self, hvid):
         """Create a Python object that wraps an IDL object with heap ID HVID."""
@@ -151,7 +151,7 @@ class IDL(IDLType("IDL", (object,), {})):
             result += item + '\n'
         return result
 
-        
+
     def __str__(self):
         """Return a brief description of the IDL object."""
         idlClass = pyidl.callFunction("Obj_Class", (self,))
@@ -165,7 +165,7 @@ class IDL(IDLType("IDL", (object,), {})):
     def __getattr__(self, attr):
         """
         Retrieve a property value or call a method on the IDL object.
-        
+
         For example:
         >>> p = IDL.plot(test=1, buffer=1)
         >>> p.color
@@ -202,11 +202,11 @@ class IDL(IDLType("IDL", (object,), {})):
             result = pyidl.callMethod("GetPropByName", args)
             return result
 
-            
+
     def __setattr__(self, attr, value):
         """
         Set a property value on the IDL object.
-        
+
         For example:
         >>> p = IDL.plot(test=1, buffer=1)
         >>> p.color = 'red'
@@ -222,14 +222,14 @@ class IDL(IDLType("IDL", (object,), {})):
         kwArgs.setdefault(attr, value)
         pyidl.callMethod("SetProperty", args, kwArgs)
 
-        
+
     # We could have defined this in the IDLType above.
     # By defining it here the docs will show up with help(IDL).
     @classmethod
     def run(cls, command, stdout=False, silent=False):
         """
         Execute an IDL command.
-        
+
         For example:
         >>> IDL.run('var = LINDGEN(100)')
         >>> IDL.run('print, TOTAL(var)')
@@ -248,7 +248,7 @@ class IDL(IDLType("IDL", (object,), {})):
             return result
         return None
 
-         
+
     # We could have defined this in the IDLType above.
     # By defining it here the docs will show up with help(IDL).
     @classmethod
@@ -257,3 +257,7 @@ class IDL(IDLType("IDL", (object,), {})):
         Exit the IDL process.
         """
         pyidl.cleanup()
+
+#OMINAS metaclass - allows for syntax of ominas.dat_read(...)
+class ominas(object):
+    __metaclass__ = IDL
