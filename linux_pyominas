@@ -10,7 +10,7 @@
 
 # configure PYTHONSTARTUP
 # script is run before every python session is launched
-export PYTHONSTARTUP=pyominas_setup.py
+export PYTHONSTARTUP=$PYOMINAS_DIR/pyominas_setup.py
 
 ###############################################################################
 ##### Linux environment variables
