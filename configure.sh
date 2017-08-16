@@ -7,6 +7,22 @@
 
 printf "Running pyominas' configure.sh script...\n"
 
+### Try to find IDL. Reference ominas' configure.sh
+if [ "$IDL_DIR" = "" ]; then
+        idl=`which idl | tail -1`
+        idlbin=$idl
+        if [ "$idl" = "" ]; then
+          read -rp "IDL not found. Please enter the location of your IDL installation (such as /usr/local/exelis/idl85): " idldir
+          IDL_DIR="$idldir"
+          export IDL_DIR
+          printf "Using IDL from $IDL_DIR\n"
+        else
+          printf "Using IDL at $idl\n"
+        fi
+else
+        printf "IDL_DIR found, $IDL_DIR, using it\n"
+fi
+
 ### PYOMINAS_DIR
 while true
 do
