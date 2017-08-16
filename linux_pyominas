@@ -21,7 +21,7 @@ echo "We will be using the path to a Python distribution's home directory you pr
 export LD_LIBRARY_PATH="$PYDIST_DIR_PYOMINAS/lib/:$IDL_DIR/bin/bin.linux.x86_64" # anaconda???
 
 ### PYTHONPATH
-export PYTHONPATH="$IDL_DIR/bin/bin.linux.x86_64:$IDL_DIR/lib/bridges"
+export PYTHONPATH="$PYTHONPATH:$IDL_DIR/bin/bin.linux.x86_64:$IDL_DIR/lib/bridges"
 
 ### PATH
 export PATH="$PYDIST_DIR_PYOMINAS/bin:$PATH"
