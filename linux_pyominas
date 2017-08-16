@@ -19,7 +19,7 @@ export PYTHONSTARTUP=pyominas_setup.py
 # echo "We will be using the path to a Python distribution's home directory you provided while running the configure.sh script. Please change PYDIST_DIR_PYOMINAS to point to the distribution's home directory if you have a custom implementation."
 
 ### LD_LIBRARY_PATH
-export LD_LIBRARY_PATH="$PYDIST_DIR_PYOMINAS/lib/:$IDL_DIR/bin/bin.linux.x86_64" 
+export LD_LIBRARY_PATH="$PYDIST_DIR_PYOMINAS/lib/:$IDL_DIR/bin/bin.linux.x86_64"
 
 ### PYTHONPATH
 export PYTHONPATH="$PYTHONPATH:$IDL_DIR/bin/bin.linux.x86_64:$IDL_DIR/lib/bridges"
@@ -30,4 +30,5 @@ export PATH="$PYDIST_DIR_PYOMINAS/bin:$PATH"
 
 # launch python
 # purpose of $@ is to pass arguments -- functionality of this still needs to be tested and refined
+APPLICATION=python
 $APPLICATION $@
