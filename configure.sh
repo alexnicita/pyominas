@@ -90,7 +90,7 @@ printf "Successfully added pyominas' directory to PYTHONPATH.\n"
 printf "Setting up pyominas alias.\n"
 
 echo "alias pyominas=$PYOMINAS_DIR/linux_pyominas" >> ~/.bashrc
-chmod a+x PYOMINAS_DIR/linux_pyominas
+chmod a+x $PYOMINAS_DIR/linux_pyominas
 
 printf "Alias setup complete.\n"
 
