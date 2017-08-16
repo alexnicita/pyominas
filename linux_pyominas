@@ -1,41 +1,32 @@
 #!/bin/sh
+###############################################################################
+### pyominas launch script for Linux
+### current configure.sh connectas pyominas alias to linux_pyominas
+### 8/16/17
+###############################################################################
 
-# pyominas setup script for Linux VM. Currently set to work with my installed
-# directories, but the script could be rewritten to search for the necessary
-# locations prior to adjusting environment varibles and launching python
-
-# ominas environment variables
+# ensure that ominas environment variables are configured
 . ~/.ominas/ominas_setup.sh
 
-# find pyomninas directory
-# if [ "$PYOMINAS_DIR" = "" ]; then
-#     # OMINAS_DIR environemtn variable from ominas_setup.sh
-#     for DIR in $OMINAS_DIR; do
-#       if [ -d $DIR ]; then
-#           if [ -f $DIR/ominas.py ]; then
-#               IDL_DIR=$DIR
-#           break
-#           fi
-#       fi
-#     done
-# fi
-#
-# if [ "$PYOMINAS_DIR" = "" ]; then
-#     echo "Unable to access the pyominas directory. You will have to
-# define the PYOMINAS_DIR environment variable to point at the main
-# pyominas directory before it will work."
-#     exit 1
-# fi
-
 # configure PYTHONSTARTUP
-APPLICATION=python
-MODULES=pyominas_setup.py
-export PYTHONSTARTUP=$MODULES
+# script is run before every python session is launched
+export PYTHONSTARTUP=pyominas_setup.py
 
-# linux bridge environment variables
-export LD_LIBRARY_PATH="/data/software/anaconda2/lib/:/usr/local/exelis/idl85/bin/bin.linux.x86_64"
-export PYTHONPATH="/usr/local/exelis/idl85/bin/bin.linux.x86_64:/usr/local/exelis/idl85/lib/bridges"
-export PATH="/data/software/anaconda2/bin:$PATH" # Ideally, find activate and source it.
+###############################################################################
+##### Linux environment variables
+##### this needs to be updated to work with computers other than my own
+echo "We will be using the path to a Python distribution's home directory you provided while running the configure.sh script. Please change PYDIST_DIR_PYOMINAS to point to the distribution's home directory if you have a custom implementation."
+
+### LD_LIBRARY_PATH
+export LD_LIBRARY_PATH="$PYDIST_DIR_PYOMINAS/lib/:$IDL_DIR/bin/bin.linux.x86_64" # anaconda???
+
+### PYTHONPATH
+export PYTHONPATH="$IDL_DIR/bin/bin.linux.x86_64:$IDL_DIR/lib/bridges"
+
+### PATH
+export PATH="$PYDIST_DIR_PYOMINAS/bin:$PATH"
+###############################################################################
 
 # launch python
-$APPLICATION $@ # pass arguments
+# purpose of $@ is to pass arguments -- functionality of this still needs to be tested and refined
+$APPLICATION $@
