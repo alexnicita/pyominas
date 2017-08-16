@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 ###############################################################################
 ### pyominas launch script for Linux
 ### current configure.sh connectas pyominas alias to linux_pyominas

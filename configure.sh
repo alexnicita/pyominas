@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 ###############################################################################
 ### configure.sh script for pyominas
 ### meant to be run after repository is cloned, but before use
