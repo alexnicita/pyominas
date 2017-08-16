@@ -103,12 +103,12 @@ do
 		case $yn in
 			[Yy]* ) read -p "Please enter the path to the home directory of your Anaconda distrubution: " path
               echo "PYDIST_DIR_PYOMINAS: $path"
-              export PYDIST_DIR_PYOMINAS=$path
+              echo "PYDIST_DIR_PYOMINAS=$path" >> ~/.bashrc
               break;;
       [Nn]* ) read -p "Please enter the path to the home directory of the Python distribution you would like to use with pyominas: " path
               echo "Warning: pyominas has only been tested with Anaconda, largely because IDL's pre-existing bridge was developed using Anaconda."
               echo "PYDIST_DIR_PYOMINAS: $path"
-              export PYDIST_DIR_PYOMINAS=$path
+              echo "PYDIST_DIR_PYOMINAS=$path" >> ~/.bashrc
               break;;
       * ) echo 'Please input [y/n]:';;
   	esac
