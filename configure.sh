@@ -18,6 +18,8 @@ if [ "$IDL_DIR" = "" ]; then
 
         idlsetup=`readlink -e $idl`
         idlsetup=`dirname $idlsetup`"/idl_setup.bash"
+
+        echo "idlsetup=$idlsetup" >> ~/.bashrc
 fi
 
 ### PYOMINAS_DIR

@@ -5,7 +5,10 @@
 ### 8/16/17
 ###############################################################################
 
-# ensure that ominas environment variables are configured
+# ensure that idl and ominas environment variables are configured
+if [ "$IDL_DIR" = "" ]; then
+  . $idlsetup
+fi
 . ~/.ominas/ominas_setup.sh
 
 # configure PYTHONSTARTUP
