@@ -402,3 +402,6 @@ class OMINAS(IDLType("IDL", (object,), {})):
         Exit the IDL process.
         """
         pyidl.cleanup()
+
+
+wrapper=OMINAS.objarrw(1)
