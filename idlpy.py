@@ -58,7 +58,7 @@ class IDLType(type):
         # For internal Python attributes, just call our superclass
         if (attr[0] == '_' or attr == 'getdoc'):
             return getattr(super(IDLType, cls), attr)
-        print("metaclass __getattr__: " + attr)
+        # print("metaclass __getattr__: " + attr)
         # we need to ask IDL if this variable exists
         # if it doesn't, then we assume that it is an IDL function call.
         # unfortunately, this won't throw an error for mispelled variables...
@@ -178,7 +178,7 @@ class IDL(IDLType("IDL", (object,), {})):
         if (attr[0] == '_'):
             return getattr(super(IDL, self), attr)
 
-        print("instance __getattr__: " + attr)
+        # print("instance __getattr__: " + attr)
 
         isMethod = pyidl.callFunction("Obj_HasMethod", (self, attr,))
 
@@ -190,9 +190,9 @@ class IDL(IDLType("IDL", (object,), {})):
                 args.insert(0, attr)
                 args.insert(0, self.hvid)
                 args = tuple(args)
-                print attr
-                print args
-                print kw
+                # print attr
+                # print args
+                # print kw
                 return pyidl.callMethod('_overloadmethod', args, kw)
             return wrapper
         else:
