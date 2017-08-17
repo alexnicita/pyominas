@@ -6,9 +6,12 @@
 ###############################################################################
 
 # ensure that idl and ominas environment variables are configured
-if [ "$IDL_DIR" = "" ]; then
-  . $idlsetup
-fi
+
+### below isn't running correctly, just going to source everytime
+# if [ "$IDL_DIR" = "" ]; then
+#   . $idlsetup
+# fi
+. $idlsetup
 . ~/.ominas/ominas_setup.sh
 
 # configure PYTHONSTARTUP
