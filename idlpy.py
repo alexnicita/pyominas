@@ -111,10 +111,9 @@ class IDLRoutine(object):
             return pyidl.callMethod(staticMethod, args, kw)
         return wrapper
 
-
-### keep running into inheritance issues with this
-### sloppy implementation, but this should allow users to call ominas.method_name()
-class OMINAS(IDLType("IDL", (object,), {})):
+# Use a metaclass so we can have class methods (such as "run") and attributes
+# that can only be invoked on the class, not an instance.
+class IDL(IDLType("IDL", (object,), {})):
     """Used to invoke the run method, and get or set IDL $main$ variables.
     Also serves as the Python class for wrapping IDL objects."""
 
@@ -258,10 +257,9 @@ class OMINAS(IDLType("IDL", (object,), {})):
         """
         pyidl.cleanup()
 
-#OMINAS metaclass - allows for syntax of ominas.dat_read(...)
-# Use a metaclass so we can have class methods (such as "run") and attributes
-# that can only be invoked on the class, not an instance.
-class IDL(IDLType("IDL", (object,), {})):
+### keep running into inheritance issues with this
+### sloppy implementation, but this should allow users to call ominas.method_name()
+class OMINAS(IDLType("IDL", (object,), {})):
     """Used to invoke the run method, and get or set IDL $main$ variables.
     Also serves as the Python class for wrapping IDL objects."""
 
